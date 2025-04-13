@@ -1,4 +1,4 @@
-# 💌 socket-hugs
+# 🫂💌 socket-hugs
 
 > Um servidor carinhoso de mensagens, feito pra praticar redes e aquecer corações 🫶
 
