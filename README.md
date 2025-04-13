@@ -22,7 +22,11 @@ Criado como forma de reaprender com leveza depois de uma experiência frustrante
 ## ⚙️ Tecnologias
 
 - Python 3.x
-- Módulo `socket`, ``, ``, ``, ``
+- Bibliotecas padrão utilizadas:
+  - `socket`: para comunicação cliente-servidor via TCP
+  - `threading`: para lidar com múltiplos clientes simultaneamente
+  - `random`: para selecionar recadinhos de forma aleatória
+
 
 ---
 
