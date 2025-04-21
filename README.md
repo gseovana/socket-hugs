@@ -1,8 +1,8 @@
 # 🫂💌 socket-hugs
 
-> Um servidor carinhoso de mensagens, feito pra praticar redes e aquecer corações 🫶
+> Um servidor de mensagens, feito pra praticar redes e aprender com os erros de forma carinhosa 💟 
 
-Este projeto é uma implementação simples de comunicação cliente-servidor usando sockets em Python. A ideia é permitir que os clientes enviem ou recebam recadinhos aleatórios transformando o aprendizado em algo fofo e divertido ✨
+Este projeto é uma implementação simples de comunicação cliente-servidor usando sockets em Python. A ideia é permitir que os clientes enviem ou recebam recadinhos aleatórios transformando o aprendizado em algo legal ✨
 
 Criado como forma de reaprender com leveza depois de uma experiência frustrante com a matéria de redes I.
 
@@ -67,9 +67,9 @@ python client.py
 --- 
 
 ## 💖 Sobre
-Este projeto foi desenvolvido como uma forma de praticar conceitos de redes de computadores, especificamente a comunicação via sockets em Python. A proposta surgiu após uma experiência frustrante com a entrega de um trabalho, em que os resultados não refletiram o esforço investido.
+Este projeto foi desenvolvido como uma forma de praticar conceitos de redes de computadores, especificamente a comunicação via sockets em Python. A proposta surgiu depois de uma experiência frustrante com a entrega de um trabalho, em que os resultados não refletiram o esforço investido.
 
-A ideia foi transformar essa frustração em um desafio pessoal, criando uma aplicação funcional que fosse a minha cara. O projeto simula um servidor de mensagens que permite o envio e o recebimento de recadinhos, trazendo leveza ao processo de aprendizado técnico de uma matéria que me interessei muito.
+A ideia foi transformar essa frustração em um desafio pessoal, criando uma aplicação funcional que tivesse a ver comigo. O projeto simula um servidor de mensagens que permite o envio e o recebimento de recadinhos, um projeto simples que com certeza irá me auxiliar no de aprendizado técnico de uma matéria que me interessei muito.
 
 Além de consolidar conhecimentos em sockets e comunicação cliente-servidor, ele também reflete a importância de manter a curiosidade e a motivação, mesmo quando os resultados imediatos não são os esperados 💪😼
 
