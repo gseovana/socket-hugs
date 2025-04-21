@@ -2,7 +2,7 @@
 
 > Um servidor de mensagens, feito pra praticar redes e aprender com os erros de forma carinhosa 💟 
 
-Este projeto é uma implementação simples de comunicação cliente-servidor usando sockets em Python. A ideia é permitir que os clientes enviem ou recebam recadinhos aleatórios transformando o aprendizado em algo legal ✨
+Este projeto é uma implementação simples de comunicação cliente-servidor usando sockets em Python. A ideia é permitir que os clientes enviem ou recebam recadinhos aleatórios, transformando o aprendizado em algo legal ✨
 
 Criado como forma de reaprender com leveza depois de uma experiência frustrante com a matéria de redes I.
 
@@ -36,7 +36,7 @@ Criado como forma de reaprender com leveza depois de uma experiência frustrante
 
 ```bash
 git clone git@github.com:gseovana/socket-hugs.git socket-hugs
-cd pote-de-recados
+cd socket-hugs
 ```
 
 ### 2. Inicie o servidor
