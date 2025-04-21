@@ -1,66 +1,85 @@
 import socket
 import threading
 import queue
+import struct
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect(('127.0.0.1', 2003))
 
 input_queue = queue.Queue()
 
-nickname = input("Choose your nickname: ").strip()
-if not nickname:
-    nickname = "anon"
 
-kind_message = input("Type your cute message: ").strip()
-if not kind_message:
-    kind_message = "No message provided."
+def send_message(client, message):
+    message = message.encode('utf-8')
+    length = struct.pack('>I', len(message))  # empacota a mensagem em 4 bytes
+    client.sendall(length + message)
 
-author = input("Type your name as an author (if none is informed, it will be anonymous): ").strip()
-if not author:
-    author = "anonymous"
+# função auxiliar para receber mensagem com tamanho fixo
+def receive_message(client):
+    length_data = client.recv(4)  # lê 4 bytes para o tamanho da mensagem
+    if not length_data:
+        return None
+    length = struct.unpack('>I', length_data)[0]  # desempacota o tamanho da mensagem
+    message = client.recv(length).decode('utf-8') # lê a mensagem com o tamanho especificado
+
+    return message
 
 def receive():
     while True:
         try:
-            message = client.recv(1024).decode('utf-8')
+            message = receive_message(client)
+            if not message:
+                print("ah não... a conexão foi encerrada pelo servidor >:(")
+                client.close()
+                break
+            if message == 'saindo... até a próxima!':
+                print(message)
+                client.close()
+                break
             if message == 'NICK':
-                client.send(nickname.encode('utf-8'))
+                nickname = input("escolha um nick legal: ").strip()
+                if not nickname:
+                    nickname = "anon"
+                send_message(client, nickname)
+            elif message == 'MENU':
+                print("----- MENU -----\n")
+                print("Escolha uma opção:\n1. Deixar uma mensgaem fofa!\n2. Ler uma mensagem fofa aleatória.\n3. Sair")
+                user_input = input("Sua escolha: ")
+                send_message(client, user_input)
             elif message == 'KIND_MESSAGE':
-                client.send(kind_message.encode('utf-8'))
+                kind_message = input("Digite sua mensagem fofa: ").strip()
+                if not kind_message:
+                    kind_message = "ué, não tem mensagem?"
+                send_message(client, kind_message)
             elif message == 'AUTHOR_KIND_MESSAGES':
-                client.send(author.encode('utf-8'))
-                print(f"Sent author: {author}")  # Debugging line
+                author = input("Informe um autor (você ou outra pessoa. se não informar, será anônimo): ").strip()
+                if not author:
+                    author = "anônimo"
+                send_message(client, author)
+                print("mensagem gravada com sucesso!")
             else:
                 print(message)
         except Exception as e:
-            print(f"An error occurred: {e}")
+            print(f"ops! ocorreu um erro ao receber a mensagem do server: {e}")
             client.close()
             break
 
 def write():
     while True:
         try:
-            # Check if there's input in the queue
             if not input_queue.empty():
-                message = f"{nickname}: {input_queue.get()}"
+                message = input_queue.get()
                 client.send(message.encode('utf-8'))
         except Exception as e:
-            print(f"An error occurred in write: {e}")
+            print(f"ah não! um erro ocorreu na função de escrita: {e}")
             client.close()
             break
 
-def input_handler():
-    while True:
-        # Get user input and put it in the queue
-        user_input = input("")
-        input_queue.put(user_input)
-
-# Start a thread for handling user input
-input_thread = threading.Thread(target=input_handler, daemon=True)
-input_thread.start()
-
-receive_thread = threading.Thread(target=receive, daemon=True)
+receive_thread = threading.Thread(target=receive)
 receive_thread.start()
 
-write_thread = threading.Thread(target=write, daemon=True)
+write_thread = threading.Thread(target=write)
 write_thread.start()
+
+receive_thread.join()
+write_thread.join()
