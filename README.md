@@ -41,7 +41,7 @@ cd socket-hugs
 
 ### 2. Inicie o servidor
 ```bash
-python servidor.py
+python server.py
 ```
 
 ### 3. Em outro terminal, rode o cliente (quantos quiser)
@@ -77,5 +77,5 @@ Além de consolidar conhecimentos em sockets e comunicação cliente-servidor, e
 
 <p align="center">
   <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExZGxpY3ZyeHgzYWc0dGJpcnI3NTZhM3Qwa3JqamdsbTczcXE4YXF0NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/IbI0H8ie0rUMohFMbP/giphy.gif" width="250"/><br/>
-  📌 Feito com carinho por Geovana ✨
+  📌 Feito com carinho por Geovana
 </p>
